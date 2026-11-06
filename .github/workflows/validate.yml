@@ -4,7 +4,7 @@ on:
   push:
   pull_request:
   schedule:
-    - cron: "0 4 * * 1"
+    - cron: "0 4 * * *"  # daily: the beta/dev smoke tests follow Home Assistant
 
 jobs:
   hassfest:
@@ -31,7 +31,7 @@ jobs:
       - run: pytest -q
 
   # The newest Home Assistant (unpinned): catches deprecations and breaking
-  # changes before users meet them. Runs every Monday too; a failure here
+  # changes before users meet them. Runs daily too; a failure here
   # means the integration needs an update and a new release.
   tests-latest-ha:
     runs-on: ubuntu-latest
@@ -43,3 +43,18 @@ jobs:
       - run: pip install --upgrade pytest-homeassistant-custom-component
       - run: pip show homeassistant | grep -i '^version'
       - run: pytest -q -W error::DeprecationWarning:custom_components.elbilstatistik
+
+  # A real Home Assistant container of the coming release (beta: the week
+  # before a release; it is the latest release otherwise) and of dev
+  # (nightly): load the integration, call the service, no errors or
+  # deprecation warnings. So it works on release day, not days after.
+  smoke:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        tag: [beta, dev]
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker pull -q ghcr.io/home-assistant/home-assistant:${{ matrix.tag }}
+      - run: tests/smoke/run.sh ${{ matrix.tag }}

@@ -1,0 +1,22 @@
+homeassistant:
+  name: smoke
+logger:
+  default: warning
+  logs:
+    homeassistant.setup: info
+system_log:
+automation:
+  - alias: smoke lookup
+    triggers:
+      - trigger: homeassistant
+        event: start
+    actions:
+      - action: elbilstatistik.lookup_plate
+        data:
+          plate: QQ00000
+        response_variable: r
+      - action: system_log.write
+        data:
+          message: "SMOKE lookup found={{ r.found }} plate={{ r.plate }}"
+          level: warning
+          logger: smoke

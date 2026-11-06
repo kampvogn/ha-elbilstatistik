@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "minor_version": 5,
+  "key": "core.config_entries",
+  "data": {
+    "entries": [
+      {"created_at":"1970-01-01T00:00:00+00:00","data":{},"disabled_by":null,"discovery_keys":{},"domain":"elbilstatistik","entry_id":"01SMOKETEST000000000000000","minor_version":1,"modified_at":"1970-01-01T00:00:00+00:00","options":{},"pref_disable_new_entities":false,"pref_disable_polling":false,"source":"user","subentries":[],"title":"Elbilstatistik","unique_id":"elbilstatistik","version":1},
+      {"created_at":"2026-11-06T12:49:52.661691+00:00","data":{},"disabled_by":null,"discovery_keys":{},"domain":"marketplace","entry_id":"01M6REH30N6Y9TT6X0DVXF79TG","minor_version":1,"modified_at":"2026-11-06T12:49:52.661693+00:00","options":{},"pref_disable_new_entities":false,"pref_disable_polling":false,"source":"system","subentries":[],"title":"","unique_id":null,"version":1},
+      {"created_at":"2026-11-06T12:49:52.662012+00:00","data":{},"disabled_by":null,"discovery_keys":{},"domain":"analytics","entry_id":"01M6REH30P03CMFF4RWEVJ2VBH","minor_version":1,"modified_at":"2026-11-06T12:49:52.662013+00:00","options":{},"pref_disable_new_entities":false,"pref_disable_polling":false,"source":"system","subentries":[],"title":"Analytics","unique_id":null,"version":1},
+      {"created_at":"2026-11-06T12:49:52.663324+00:00","data":{},"disabled_by":null,"discovery_keys":{},"domain":"backup","entry_id":"01M6REH30QBQ7DZQC5DBAB0EPN","minor_version":1,"modified_at":"2026-11-06T12:49:52.663326+00:00","options":{},"pref_disable_new_entities":false,"pref_disable_polling":false,"source":"system","subentries":[],"title":"Backup","unique_id":null,"version":1}
+    ]
+  }
+}
