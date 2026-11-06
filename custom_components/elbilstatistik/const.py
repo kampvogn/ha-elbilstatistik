@@ -17,3 +17,6 @@ SIGNAL_UPDATED = f"{DOMAIN}_updated"
 
 # Seconds to stay quiet after a 429 without a usable Retry-After header.
 DEFAULT_RETRY_AFTER = 60
+
+# Where to get a free API key (shown in the setup form).
+ACCOUNT_URL = "https://api.elbilstatistik.dk/account/"

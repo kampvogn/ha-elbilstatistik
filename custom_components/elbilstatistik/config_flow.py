@@ -12,6 +12,7 @@ from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
 from .api import CannotConnect, ElbilstatistikClient, InvalidAuth, RateLimited
 from .const import (
+    ACCOUNT_URL,
     CONF_API_KEY,
     CONF_CACHE_HOURS,
     CONF_FUZZY,
@@ -58,6 +59,7 @@ class ElbilstatistikConfigFlow(ConfigFlow, domain=DOMAIN):
             step_id="user",
             data_schema=vol.Schema({vol.Optional(CONF_API_KEY, default=""): str}),
             errors=errors,
+            description_placeholders={"account_url": ACCOUNT_URL},
         )
 
 

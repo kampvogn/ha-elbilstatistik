@@ -3,7 +3,7 @@
     "step": {
       "user": {
         "title": "Elbilstatistik",
-        "description": "The integration works without a key (50 lookups per day per IP address). A free API key from https://api.elbilstatistik.dk/account/ gives you 3,000 lookups per month. The key is optional; leave the field empty to run without.",
+        "description": "The integration works without a key (50 lookups per day per IP address). A free API key from {account_url} gives you 3,000 lookups per month. The key is optional; leave the field empty to run without.",
         "data": {
           "api_key": "API key (optional)"
         }

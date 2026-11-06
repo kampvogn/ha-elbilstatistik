@@ -3,7 +3,7 @@
     "step": {
       "user": {
         "title": "Elbilstatistik",
-        "description": "Du kan bruge integrationen helt uden nøgle (50 opslag om dagen pr. internetadresse). Med en gratis API-nøgle fra https://api.elbilstatistik.dk/account/ får du 3.000 opslag om måneden. Nøglen er valgfri; lad feltet stå tomt for at bruge den uden.",
+        "description": "Du kan bruge integrationen helt uden nøgle (50 opslag om dagen pr. internetadresse). Med en gratis API-nøgle fra {account_url} får du 3.000 opslag om måneden. Nøglen er valgfri; lad feltet stå tomt for at bruge den uden.",
         "data": {
           "api_key": "API-nøgle (valgfri)"
         }

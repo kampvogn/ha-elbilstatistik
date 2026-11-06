@@ -19,6 +19,8 @@ jobs:
       - uses: hacs/action@main
         with:
           category: integration
+          # No icon yet (home-assistant/brands); only needed for HACS' default list.
+          ignore: brands
 
   tests:
     runs-on: ubuntu-latest
