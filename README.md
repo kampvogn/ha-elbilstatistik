@@ -90,7 +90,7 @@ actions:
     data:
       title: Bil i indkørslen
       message: >
-        {{ bil.colour }} {{ bil.make }} {{ bil.model }}
+        {{ bil.colour ~ ' ' if bil.colour not in [none, 'Ukendt'] else '' }}{{ bil.make }} {{ bil.model }}
         {{ '(el)' if bil.is_electric else '(' ~ bil.fuel | lower ~ ')' }}
         i indkørslen
   - delay: "00:01:00"              # undgå flere beskeder for samme bil
@@ -129,7 +129,7 @@ actions:
       title: "{{ bil.plate }}"
       message: >
         {% if bil.found %}
-        {{ bil.colour }} {{ bil.make }} {{ bil.model }} {{ bil.variant }},
+        {{ bil.colour ~ ' ' if bil.colour not in [none, 'Ukendt'] else '' }}{{ bil.make }} {{ bil.model }} {{ bil.variant }},
         {{ bil.fuel }}, første registrering {{ bil.first_registration }}
         {% else %}
         Pladen findes ikke i registret.
