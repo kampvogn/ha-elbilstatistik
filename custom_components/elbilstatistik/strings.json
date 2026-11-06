@@ -1,0 +1,57 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Elbilstatistik",
+        "description": "The integration works without a key (50 lookups per day per IP address). A free API key from https://api.elbilstatistik.dk/account/ gives you 3,000 lookups per month. The key is optional; leave the field empty to run without.",
+        "data": {
+          "api_key": "API key (optional)"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "The key was rejected.",
+      "cannot_connect": "Could not reach api.elbilstatistik.dk.",
+      "rate_limited": "Quota used up; try again later.",
+      "unknown": "Unexpected error."
+    },
+    "abort": {
+      "already_configured": "The integration is already set up."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Options",
+        "description": "Results are cached so the same plate does not cost a new lookup every time. Fuzzy matching corrects typical camera misreads (0/O, 1/I, 8/B etc.).",
+        "data": {
+          "cache_hours": "Cache time (hours)",
+          "fuzzy": "Fuzzy matching"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "last_vehicle": {
+        "name": "Last vehicle"
+      }
+    }
+  },
+  "services": {
+    "lookup_plate": {
+      "name": "Look up plate",
+      "description": "Looks up a Danish plate on elbilstatistik.dk and returns make, model, colour etc.",
+      "fields": {
+        "plate": {
+          "name": "Plate",
+          "description": "E.g. AB12345. Spaces and hyphens are ignored."
+        },
+        "fuzzy": {
+          "name": "Fuzzy matching",
+          "description": "Correct typical camera misreads. Defaults to the option."
+        }
+      }
+    }
+  }
+}

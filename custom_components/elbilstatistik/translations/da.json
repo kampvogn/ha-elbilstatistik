@@ -1,0 +1,57 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Elbilstatistik",
+        "description": "Du kan bruge integrationen helt uden nøgle (50 opslag om dagen pr. internetadresse). Med en gratis API-nøgle fra https://api.elbilstatistik.dk/account/ får du 3.000 opslag om måneden. Nøglen er valgfri; lad feltet stå tomt for at bruge den uden.",
+        "data": {
+          "api_key": "API-nøgle (valgfri)"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Nøglen blev afvist.",
+      "cannot_connect": "Kunne ikke nå api.elbilstatistik.dk.",
+      "rate_limited": "Kvoten er brugt op; prøv igen senere.",
+      "unknown": "Uventet fejl."
+    },
+    "abort": {
+      "already_configured": "Integrationen er allerede sat op."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Indstillinger",
+        "description": "Opslag gemmes, så den samme plade ikke koster et nyt opslag hver gang. Fuzzy-matching retter typiske læsefejl fra kameraer (0/O, 1/I, 8/B m.fl.).",
+        "data": {
+          "cache_hours": "Cache-tid (timer)",
+          "fuzzy": "Ret læsefejl (fuzzy)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "last_vehicle": {
+        "name": "Seneste køretøj"
+      }
+    }
+  },
+  "services": {
+    "lookup_plate": {
+      "name": "Slå nummerplade op",
+      "description": "Slår en dansk nummerplade op på elbilstatistik.dk og returnerer mærke, model, farve m.m.",
+      "fields": {
+        "plate": {
+          "name": "Nummerplade",
+          "description": "Fx AB12345. Mellemrum og bindestreger ignoreres."
+        },
+        "fuzzy": {
+          "name": "Ret læsefejl",
+          "description": "Ret typiske kameralæsefejl. Standard følger indstillingerne."
+        }
+      }
+    }
+  }
+}

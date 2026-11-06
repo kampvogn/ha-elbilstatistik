@@ -1,0 +1,12 @@
+lookup_plate:
+  fields:
+    plate:
+      required: true
+      example: "AB12345"
+      selector:
+        text:
+    fuzzy:
+      required: false
+      default: true
+      selector:
+        boolean:
