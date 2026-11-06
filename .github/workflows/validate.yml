@@ -29,3 +29,17 @@ jobs:
           python-version: "3.13"
       - run: pip install pytest-homeassistant-custom-component==0.13.316
       - run: pytest -q
+
+  # The newest Home Assistant (unpinned): catches deprecations and breaking
+  # changes before users meet them. Runs every Monday too; a failure here
+  # means the integration needs an update and a new release.
+  tests-latest-ha:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: pip install --upgrade pytest-homeassistant-custom-component
+      - run: pip show homeassistant | grep -i '^version'
+      - run: pytest -q -W error::DeprecationWarning:custom_components.elbilstatistik
