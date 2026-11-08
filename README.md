@@ -29,7 +29,7 @@ Kopiér mappen `custom_components/elbilstatistik` til `custom_components/elbilst
 
 | | Opslag |
 |---|---|
-| Uden nøgle | 50 om dagen pr. internetadresse |
+| Uden nøgle | 20 om dagen pr. internetadresse |
 | Med gratis nøgle | 3.000 om måneden |
 
 Opret en gratis nøgle på <https://api.elbilstatistik.dk/account/>. Er kvoten brugt op, holder integrationen pause, indtil API'et siger, at der igen er plads (det står i loggen én gang), og servicen giver en fejl i mellemtiden. Cachen gør, at et kamera, der ser den samme bil mange gange, kun koster ét opslag pr. døgn.
@@ -151,7 +151,7 @@ Du kan også prøve servicen under **Udviklerværktøjer > Handlinger** (vælg "
 Look up a Danish license plate from Home Assistant: make, model (clean display names), colour, fuel/electric, status and first registration, via the public API of [elbilstatistik.dk](https://api.elbilstatistik.dk/) (data from the Danish Motor Vehicle Register, DMR; no owner data).
 
 - Install via HACS (custom repository `https://github.com/kampvogn/ha-elbilstatistik`, type Integration) or copy `custom_components/elbilstatistik` manually. Set up under Settings > Devices & services; no YAML.
-- An API key is optional. Without: 50 lookups per day per IP address. With a free key from <https://api.elbilstatistik.dk/account/>: 3,000 per month.
+- An API key is optional. Without: 20 lookups per day per IP address. With a free key from <https://api.elbilstatistik.dk/account/>: 3,000 per month.
 - Service `elbilstatistik.lookup_plate` (`plate`, optional `fuzzy`) returns `plate, found, make, model, variant, colour, fuel, is_electric, status, first_registration, model_year, vehicle_type, data_date, match` (`exact`/`fuzzy`), fires the event `elbilstatistik_vehicle` with the same data and updates the sensor "Last vehicle".
 - Results are cached per plate (default 24 h, also "not found"); on HTTP 429 lookups pause until `Retry-After` has passed.
 - Frigate example above: needs Frigate 0.16+ with LPR and MQTT; it listens to `frigate/tracked_object_update` (`type: lpr`).
