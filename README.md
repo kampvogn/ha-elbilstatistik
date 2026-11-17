@@ -6,12 +6,21 @@ Data kommer fra det offentlige API på [elbilstatistik.dk](https://api.elbilstat
 
 ## Installation
 
-### Med HACS (anbefalet)
+### Med Marketplace (Home Assistant 2026.11 og nyere, anbefalet)
+
+HACS er siden Home Assistant 2026.11 indbygget som **Marketplace**. Elbilstatistik er (endnu) ikke i kataloget, så den tilføjes som brugerdefineret repository:
+
+1. Gå til **Indstillinger > Marketplace** og vælg **Tilføj fra link** (Add from link) øverst til højre.
+2. Indsæt `kampvogn/ha-elbilstatistik` (eller `https://github.com/kampvogn/ha-elbilstatistik`) og tryk **Tilføj**. Første gang beder Marketplace dig forbinde din GitHub-konto; det gøres med et login på GitHub, ikke dit kodeord i Home Assistant.
+3. Åbn **Elbilstatistik**, og installér den. Der skal ikke genstartes.
+
+### Med HACS (Home Assistant 2026.10 og ældre)
 
 1. Åbn HACS i Home Assistant, vælg de tre prikker øverst til højre og **Brugerdefinerede repositories** (Custom repositories).
 2. Indsæt `https://github.com/kampvogn/ha-elbilstatistik`, vælg typen **Integration** og tryk **Tilføj**.
 3. Find **Elbilstatistik** i HACS, tryk **Download**, og genstart Home Assistant.
 
+Har du allerede installeret den med HACS, flytter Home Assistant 2026.11 den selv over i Marketplace, og opdateringerne fortsætter.
 
 ### Manuelt
 
@@ -150,7 +159,7 @@ Du kan også prøve servicen under **Udviklerværktøjer > Handlinger** (vælg "
 
 Look up a Danish license plate from Home Assistant: make, model (clean display names), colour, fuel/electric, status and first registration, via the public API of [elbilstatistik.dk](https://api.elbilstatistik.dk/) (data from the Danish Motor Vehicle Register, DMR; no owner data).
 
-- Install via HACS (custom repository `https://github.com/kampvogn/ha-elbilstatistik`, type Integration) or copy `custom_components/elbilstatistik` manually. Set up under Settings > Devices & services; no YAML.
+- Install via the Marketplace (Home Assistant 2026.11+: Settings > Marketplace > Add from link, `kampvogn/ha-elbilstatistik`) or HACS (2026.10 and older: custom repository, type Integration), or copy `custom_components/elbilstatistik` manually. Set up under Settings > Devices & services; no YAML.
 - An API key is optional. Without: 20 lookups per day per IP address. With a free key from <https://api.elbilstatistik.dk/account/>: 3,000 per month.
 - Service `elbilstatistik.lookup_plate` (`plate`, optional `fuzzy`) returns `plate, found, make, model, variant, colour, fuel, is_electric, status, first_registration, model_year, vehicle_type, data_date, match` (`exact`/`fuzzy`), fires the event `elbilstatistik_vehicle` with the same data and updates the sensor "Last vehicle".
 - Results are cached per plate (default 24 h, also "not found"); on HTTP 429 lookups pause until `Retry-After` has passed.
